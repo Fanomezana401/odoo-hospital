@@ -1,0 +1,41 @@
+version: '3.7' # Changement vers une version plus récente pour supporter 'healthcheck' et 'condition: service_healthy'
+
+services:
+  # 1. Service de Base de Données PostgreSQL
+  db:
+    image: postgres:15
+    environment:
+      # Credentials de la base de données
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=odoo
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    
+    # *** AJOUT CLÉ : HEALTHCHECK ***
+    # Vérifie que PostgreSQL est vraiment prêt à accepter des connexions.
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U odoo"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # 2. Service Odoo (Web)
+  web:
+    image: odoo:17
+    ports:
+      - "8069:8069"
+    volumes:
+      - ./odoo-data:/var/lib/odoo
+      - ./addons:/mnt/extra-addons
+    environment:
+      # Connexion à la base de données (utilise le nom de service 'db')
+      - HOST=db
+      - USER=odoo
+      - PASSWORD=odoo
+      
+    # *** MODIFICATION CLÉ : DEPENDS_ON ***
+    # Odoo attend que le service 'db' soit dans l'état 'healthy' avant de démarrer.
+    depends_on:
+      db:
+        condition: service_healthy

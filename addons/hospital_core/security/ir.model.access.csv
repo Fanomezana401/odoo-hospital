@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hospital_patient_manager,hospital.patient manager,model_hospital_patient,hospital_core.group_manager,1,1,1,1
+access_hospital_patient_admin,hospital.patient admin,model_hospital_patient,hospital_core.group_admin,1,1,1,0
+access_hospital_patient_doctor,hospital.patient doctor,model_hospital_patient,hospital_core.group_doctor,1,0,0,0
+access_hospital_appointment_manager,hospital.appointment manager,model_hospital_appointment,hospital_core.group_manager,1,1,1,1
+access_hospital_appointment_admin,hospital.appointment admin,model_hospital_appointment,hospital_core.group_admin,1,1,1,0
+access_hospital_appointment_doctor,hospital.appointment doctor,model_hospital_appointment,hospital_core.group_doctor,1,1,0,0
+access_hospital_slot_manager,hospital.slot manager,model_hospital_doctor_slot,hospital_core.group_manager,1,1,1,1
+access_hospital_slot_admin,hospital.slot admin,model_hospital_doctor_slot,hospital_core.group_admin,1,1,1,0
+access_hospital_slot_doctor,hospital.slot doctor,model_hospital_doctor_slot,hospital_core.group_doctor,1,1,1,0

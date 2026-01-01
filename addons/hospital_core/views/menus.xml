@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_patients" model="ir.actions.act_window">
+        <field name="name">Patients</field>
+        <field name="res_model">hospital.patient</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_appointments" model="ir.actions.act_window">
+        <field name="name">Rendez-vous</field>
+        <field name="res_model">hospital.appointment</field>
+        <field name="view_mode">tree,form,calendar</field>
+    </record>
+
+    <record id="action_slots" model="ir.actions.act_window">
+        <field name="name">Planning Docteurs</field>
+        <field name="res_model">hospital.doctor.slot</field>
+        <field name="view_mode">calendar,tree,form</field>
+    </record>
+
+    <menuitem id="menu_hospital_root" name="Hospital" sequence="10"/>
+
+    <menuitem id="menu_hospital_admin" name="Administration" parent="menu_hospital_root" sequence="10"/>
+    <menuitem id="menu_hospital_clinical" name="Clinique" parent="menu_hospital_root" sequence="20"/>
+
+    <menuitem id="menu_patients" name="Patients" parent="menu_hospital_admin" action="action_patients" sequence="10"/>
+    <menuitem id="menu_slots" name="Planning (créneaux)" parent="menu_hospital_admin" action="action_slots" sequence="20"/>
+    <menuitem id="menu_appointments" name="Rendez-vous" parent="menu_hospital_clinical" action="action_appointments" sequence="10"/>
+</odoo>

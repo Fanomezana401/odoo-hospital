@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hospital_appointment_calendar" model="ir.ui.view">
+        <field name="name">hospital.appointment.calendar</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <calendar string="Rendez-vous" 
+                      date_start="appointment_dt" 
+                      date_stop="appointment_end_dt" 
+                      color="doctor_id" 
+                      mode="week">
+                <field name="patient_id"/>
+                <field name="doctor_id" avatar_field="image_128"/>
+                <field name="state" filters="1"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="view_hospital_appointment_tree" model="ir.ui.view">
+        <field name="name">hospital.appointment.tree</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="state == 'pending'" decoration-success="state == 'done'">
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="appointment_dt"/>
+                <field name="appointment_type"/>
+                <field name="state" widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_hospital_appointment_form" model="ir.ui.view">
+        <field name="name">hospital.appointment.form</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <form string="Rendez-vous">
+                <header>
+                    <button name="action_start" string="Démarrer" type="object" class="btn-primary" 
+                            invisible="state != 'pending'" groups="hospital_core.group_doctor"/>
+                    <button name="action_finish" string="Terminer" type="object" class="btn-success" 
+                            invisible="state != 'ongoing'" groups="hospital_core.group_doctor"/>
+                    <button name="action_create_invoice" string="Facturer" type="object" class="btn-info" 
+                            invisible="state != 'done' or invoice_id != False" groups="hospital_core.group_admin"/>
+                    <field name="state" widget="statusbar" statusbar_visible="pending,ongoing,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_create_invoice" type="object" class="oe_stat_button" icon="fa-money" invisible="not invoice_id">
+                            <field name="payment_state" widget="statinfo" string="Paiement"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="patient_id" readonly="state == 'done'"/>
+                            <field name="doctor_id" readonly="state == 'done'"/>
+                            <field name="appointment_type" widget="radio" readonly="state == 'done'"/>
+                        </group>
+                        <group>
+                            <field name="appointment_dt" readonly="state == 'done'"/>
+                            <field name="duration" widget="float_time" readonly="state == 'done'"/>
+                            <field name="appointment_end_dt" invisible="1"/>
+                            <field name="invoice_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Dossier Médical" invisible="state == 'pending'" groups="hospital_core.group_doctor">
+                            <group>
+                                <group string="Signes Vitaux">
+                                    <field name="temperature"/>
+                                    <field name="blood_pressure"/>
+                                    <field name="weight"/>
+                                </group>
+                                <group string="Diagnostic">
+                                    <field name="diagnostic"/>
+                                    <field name="prescription"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_slot_tree" model="ir.ui.view">
+        <field name="name">hospital.slot.tree</field>
+        <field name="model">hospital.doctor.slot</field>
+        <field name="arch" type="xml">
+            <tree decoration-danger="slot_type == 'busy'" decoration-info="slot_type == 'available'">
+                <field name="doctor_id"/>
+                <field name="start_dt"/>
+                <field name="end_dt"/>
+                <field name="slot_type" widget="badge" decoration-danger="slot_type == 'busy'" decoration-info="slot_type == 'available'"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_slot_form" model="ir.ui.view">
+        <field name="name">hospital.slot.form</field>
+        <field name="model">hospital.doctor.slot</field>
+        <field name="arch" type="xml">
+            <form string="Gestion des indisponibilités">
+                <sheet>
+                    <group>
+                        <field name="doctor_id" options="{'no_create': True}"/>
+                        <field name="slot_type"/>
+                        <field name="start_dt"/>
+                        <field name="end_dt"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_slot_calendar" model="ir.ui.view">
+        <field name="name">hospital.slot.calendar</field>
+        <field name="model">hospital.doctor.slot</field>
+        <field name="arch" type="xml">
+            <calendar date_start="start_dt" date_stop="end_dt" string="Planning" color="slot_type" mode="week">
+                <field name="doctor_id" filters="1"/>
+                <field name="slot_type"/>
+            </calendar>
+        </field>
+    </record>
+</odoo>

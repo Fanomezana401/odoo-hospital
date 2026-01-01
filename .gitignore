@@ -1,0 +1,21 @@
+# Python / Odoo
+*.pyc
+__pycache__/
+*.log
+
+# Odoo data
+odoo-data/
+postgres-data/
+filestore/
+
+# Docker volumes
+data/
+pgdata/
+
+# Environnements
+.env
+venv/
+
+# IDE
+.vscode/
+.idea/

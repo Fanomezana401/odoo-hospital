@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- Groupe Manager -->
+  <record id="group_manager" model="res.groups">
+    <field name="name">Hospital Manager</field>
+    <field name="category_id" ref="base.module_category_hidden"/>
+  </record>
+
+  <!-- Groupe Personnel Admin -->
+  <record id="group_admin" model="res.groups">
+    <field name="name">Personnel Admin Hospital</field>
+    <field name="category_id" ref="base.module_category_hidden"/>
+  </record>
+
+  <!-- Groupe Docteur -->
+  <record id="group_doctor" model="res.groups">
+    <field name="name">Docteur Hospital</field>
+    <field name="category_id" ref="base.module_category_hidden"/>
+  </record>
+</odoo>
