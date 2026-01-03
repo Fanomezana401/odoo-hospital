@@ -1,6 +1,6 @@
 # Hospital Information System (HIS) - Odoo ERP
 
-**Authors:** Elie Kokou Mokpokpo ETOVENA & Fanomezana Sarobidy Michelle RAZAFINDRAKOTO  
+**Authors:**  Fanomezana Sarobidy Michelle RAZAFINDRAKOTO & Elie Kokou Mokpokpo ETOVENA  
 **Supervised by:** Prof. Samir AMRI  
 **Academic Year:** 2025–2026  
 **GitHub Repository:** [https://github.com/Fanomezana401/odoo-hospital](https://github.com/Fanomezana401/odoo-hospital)
