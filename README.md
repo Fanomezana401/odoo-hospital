@@ -3,6 +3,7 @@
 **Authors:**  Fanomezana Sarobidy Michelle RAZAFINDRAKOTO & Elie Kokou Mokpokpo ETOVENA  
 **Supervised by:** Prof. Samir AMRI  
 **Academic Year:** 2025–2026  
+**Linked In Post:**[https://www.linkedin.com/posts/fanomezana-razafindrakoto-6ba59a307_odoo-erp-healthcareit-ugcPost-7413273620082470913-ac77?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE44DG4B-1UN9lACabktoY2Ei1ABaJRhFzE](https://www.linkedin.com/posts/fanomezana-razafindrakoto-6ba59a307_odoo-erp-healthcareit-ugcPost-7413273620082470913-ac77?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE44DG4B-1UN9lACabktoY2Ei1ABaJRhFzE)
 **GitHub Repository:** [https://github.com/Fanomezana401/odoo-hospital](https://github.com/Fanomezana401/odoo-hospital)
 
 ---
